@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time</title>
+</head>
+<body>
+    <h1 id="time"></h1>
+    <script>
+        async function updateTime() {
+            const response = await fetch('/api/time')
+            const time = await response.text()
+            document.getElementById('time').innerText = time;
+        }
+
+        setInterval(updateTime, 60000); // Обновление каждую минуту
+        updateTime(); // Инициализация при загрузке страницы
+    </script>
+</body>
+</html>
